@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><meta charset="utf-8"><title>Whatsapp link gen</title></head>
+<body style="background-color: #15202b; color: aliceblue;">
+<h1 style="font: 3rem 'Fira Sans', sans-serif">Whatsapp Link Generator</h1>
+<h2 style="font: 2rem 'Fira Sans', sans-serif">Enter number:</h2>
+<div><input type="text" id="number"></div>
+<div></br>
+    <input type="checkbox" id="cbox1" name="cbox1">
+    <label for="cbox1" style="font: 1rem 'Fira Sans', sans-serif">Remove first</label>
+</div>
+<div>
+   <input type="checkbox" id="cbox2" name="cbox2">
+   <label for="cbox2" style="font: 1rem 'Fira Sans', sans-serif">Add 972</label>
+</div>
+
+<div></br>
+    <button type="button" onclick="genLink()">Generate</button>
+    <button type="button" onclick="copyLink()">Copy to clipboard</button>
+    <button type="button" onclick="openLink()">Open Link</button>
+   
+</div>
+
+
+<div style="font-size: 30px">
+    <p id="end_url">https://wa.me/</p>
+</div>
+
+<script>
+function genLink() {
+    let z = document.getElementById("number").value;
+    z = z.replace(/\D/g, "");
+    if (document.getElementById("cbox1").checked) { z = z.substring(1); }
+    if (document.getElementById("cbox2").checked) { z = "972" + z ; }
+    document.getElementById('end_url').innerText = "https://wa.me/" + z;
+}
+
+function copyLink() { navigator.clipboard.writeText( document.getElementById("end_url").textContent ); }
+function openLink() { window.open(document.getElementById("end_url").textContent, '_blank').focus(); }
+
+</script>
+</body>
+</html>
